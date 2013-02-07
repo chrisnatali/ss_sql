@@ -1,0 +1,1 @@
+select * from (select c.meter, l.date, pl.created, (extract(epoch from pl.created) - extract(epoch from l.date)) diff from log l, primary_log pl, circuit c where l.id=pl.id and pl.circuit_id=c.id) time_diff where time_diff.diff > 3600
